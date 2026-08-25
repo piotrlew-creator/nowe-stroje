@@ -2,6 +2,11 @@
 
 Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
 
+<div class="rozmiarowka-blok">
+  <img id="rozmiarowka-miniatura" class="rozmiarowka-miniatura" src="img/rozmiarowka.jpg" alt="Tabela rozmiarów strojów sportowych">
+  <span class="rozmiarowka-podpis">Stuknij, aby powiększyć tabelę rozmiarów</span>
+</div>
+
 <form id="zgloszenie-form" class="stroj-form" novalidate>
 
   <div class="field">
@@ -30,11 +35,6 @@ Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
   <div class="field">
     <label for="numer">Numer zawodnika <span class="wymagane">*</span></label>
     <input type="number" id="numer" name="numer" inputmode="numeric" min="0" step="1" required>
-  </div>
-
-  <div class="rozmiarowka-blok">
-    <img id="rozmiarowka-miniatura" class="rozmiarowka-miniatura" src="img/rozmiarowka.jpg" alt="Tabela rozmiarów strojów sportowych">
-    <span class="rozmiarowka-podpis">Stuknij, aby powiększyć tabelę rozmiarów</span>
   </div>
 
   <div class="field">

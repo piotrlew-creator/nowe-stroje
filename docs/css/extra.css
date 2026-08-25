@@ -92,6 +92,10 @@
   border: 1.5px solid var(--md-primary-fg-color, #3f51b5);
 }
 
+.stroj-btn--danger {
+  background: #d32f2f;
+}
+
 /* ============ Rozmiarówka: miniatura + lightbox ============ */
 
 .rozmiarowka-blok {
@@ -217,6 +221,43 @@
   opacity: 0.85;
 }
 
+.app-modal-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.app-modal-actions .stroj-btn {
+  width: auto;
+  flex: 1 1 0;
+}
+
+/* Modal z formularzem edycji — szerszy, przewijalny na małych ekranach */
+.app-modal--form {
+  max-width: 420px;
+  text-align: left;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+}
+
+.app-modal--form h2 {
+  margin: 0 0 0.9rem;
+  font-size: 1.15rem;
+  text-align: center;
+}
+
+.app-modal--form .stroj-form {
+  margin-top: 0;
+}
+
+.edit-form-blad {
+  margin: -0.3rem 0 0;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(211, 47, 47, 0.1);
+  color: #d32f2f;
+  font-size: 0.85rem;
+}
+
 /* ============ Tabela ============ */
 
 .tabela-akcje {
@@ -250,7 +291,7 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 0.88rem;
-  min-width: 480px;
+  min-width: 580px;
 }
 
 #tabela-zawodnicy th,
@@ -270,4 +311,37 @@
 
 #tabela-zawodnicy tbody tr:nth-child(even) {
   background: var(--md-code-bg-color, rgba(0, 0, 0, 0.03));
+}
+
+.tabela-akcje-komorka {
+  display: flex;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: 8px;
+  border: 1.5px solid var(--md-default-fg-color--lightest, #ddd);
+  background: var(--md-default-bg-color, #fff);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn--edytuj {
+  color: var(--md-primary-fg-color, #3f51b5);
+}
+
+.icon-btn--usun {
+  color: #d32f2f;
+}
+
+.icon-btn:active {
+  opacity: 0.7;
 }

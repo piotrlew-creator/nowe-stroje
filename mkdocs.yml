@@ -25,9 +25,9 @@ extra_javascript:
   - js/common.js
   - js/form.js
   - js/tabela.js
-  - https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js
-  - https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js
-  - https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js
+  # Uwaga: biblioteki eksportu (SheetJS, jsPDF, autoTable) NIE są tu wpisane
+  # celowo — docs/js/tabela.js ładuje je leniwie z docs/js/vendor/ dopiero
+  # w momencie kliknięcia przycisku eksportu, żeby nie obciążać formularza.
 
 markdown_extensions:
   - attr_list

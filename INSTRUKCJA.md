@@ -7,6 +7,28 @@ włączenie GitHub Pages, **(3)** opcjonalnie — podmiana obrazka rozmiarówki.
 
 ---
 
+## ⚠️ Masz już wdrożony backend? Przeczytaj to najpierw
+
+Jeśli wcześniej wdrożyłeś `Code.gs` w Google Apps Script (adres URL jest
+już wklejony w `docs/js/config.js`), a plik `Code.gs` został od tego czasu
+zaktualizowany (np. dodano edycję/usuwanie wpisów w Tabeli), **musisz
+zaktualizować wdrożenie**, inaczej nowe funkcje nie będą działać:
+
+1. Otwórz arkusz Google Sheets → **Rozszerzenia → Apps Script**.
+2. Zaznacz całą zawartość edytora (`Ctrl+A`), usuń i wklej aktualną
+   zawartość pliku [`google-apps-script/Code.gs`](google-apps-script/Code.gs).
+   Zapisz (`Ctrl+S`).
+3. Kliknij **Wdróż → Zarządzaj wdwożeniami**.
+4. Przy istniejącym wdrożeniu kliknij ikonę ✏️ (edytuj).
+5. Przy polu **Wersja** wybierz **Nowa wersja** i kliknij **Wdróż**.
+6. Adres URL pozostaje taki sam — **nie trzeba** nic zmieniać w
+   `docs/js/config.js`.
+
+Jeśli backend nie był jeszcze wdrożony, pomiń tę sekcję i przejdź od razu
+do kroku 1 poniżej.
+
+---
+
 ## 1. Backend: Google Sheets + Google Apps Script
 
 Strona nie ma własnego serwera (MkDocs generuje statyczną stronę), więc
@@ -128,8 +150,14 @@ Strona automatycznie się przebuduje z nowym obrazkiem.
   Google Apps Script, który sprawdza duplikaty numeru zawodnika oraz
   pary imię+nazwisko i zapisuje wiersz w arkuszu Google Sheets.
 - Zakładka Tabela (`docs/tabela.md` + `docs/js/tabela.js`) pobiera
-  aktualne dane z tego samego skryptu i renderuje tabelę oraz obsługuje
-  eksport do `.xlsx` (biblioteka SheetJS) i `.pdf` (biblioteka jsPDF).
+  aktualne dane z tego samego skryptu i renderuje tabelę. Każdy wiersz ma
+  przyciski ✎ (edytuj — otwiera formularz w popupie) i 🗑 (usuń — po
+  potwierdzeniu). Usunięcie wpisu zwalnia numer zawodnika oraz parę
+  imię+nazwisko do ponownego użycia.
+- Przyciski eksportu do `.xlsx` (SheetJS) i `.pdf` (jsPDF + osadzona
+  czcionka DejaVu Sans, żeby polskie znaki wyświetlały się poprawnie)
+  ładują potrzebne biblioteki dopiero po kliknięciu (z `docs/js/vendor/`),
+  żeby nie obciążać wczytywania strony, gdy nikt z nich nie korzysta.
 - Cała strona jest statyczna (MkDocs + Material) i hostowana za darmo na
   GitHub Pages — jedynym "serwerem" jest darmowy Google Apps Script.
 
