@@ -1,0 +1,37 @@
+site_name: Nowe Stroje
+site_description: Zgłoszenie danych do nowych strojów sportowych
+site_url: https://piotrlew-creator.github.io/nowe-stroje/
+
+theme:
+  name: material
+  language: pl
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+  features:
+    - navigation.tabs
+    - navigation.top
+
+nav:
+  - Zgłoszenie: index.md
+  - Tabela: tabela.md
+
+extra_css:
+  - css/extra.css
+
+extra_javascript:
+  - js/config.js
+  - js/common.js
+  - js/form.js
+  - js/tabela.js
+  - https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+
+# Wyłączamy edycję na GitHub (nie ma potrzeby, strona jest formularzem)
+edit_uri: ""

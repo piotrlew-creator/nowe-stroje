@@ -1,0 +1,273 @@
+/* ============ Ogólne, mobile-first ============ */
+
+.md-content__inner {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ============ Formularz zgłoszenia ============ */
+
+.stroj-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 1rem;
+}
+
+.stroj-form .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.stroj-form label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.stroj-form label .wymagane {
+  color: #d32f2f;
+}
+
+.stroj-form input[type="text"],
+.stroj-form input[type="number"],
+.stroj-form select,
+.stroj-form textarea {
+  font-size: 16px; /* zapobiega auto-zoomowi na iOS */
+  padding: 0.75rem 0.85rem;
+  border: 1.5px solid var(--md-default-fg-color--lightest, #ccc);
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--md-default-bg-color, #fff);
+  color: var(--md-default-fg-color, #111);
+}
+
+.stroj-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3e%3cpath fill='%23555' d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.3rem;
+  padding-right: 2.5rem;
+}
+
+.stroj-form textarea {
+  min-height: 90px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.stroj-form .field-help {
+  font-size: 0.82rem;
+  opacity: 0.7;
+}
+
+.stroj-btn {
+  display: block;
+  width: 100%;
+  padding: 0.95rem 1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: var(--md-primary-fg-color, #3f51b5);
+  color: #fff;
+  transition: opacity 0.15s ease;
+}
+
+.stroj-btn:active {
+  opacity: 0.8;
+}
+
+.stroj-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.stroj-btn--secondary {
+  background: transparent;
+  color: var(--md-primary-fg-color, #3f51b5);
+  border: 1.5px solid var(--md-primary-fg-color, #3f51b5);
+}
+
+/* ============ Rozmiarówka: miniatura + lightbox ============ */
+
+.rozmiarowka-blok {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0 1.3rem;
+  padding: 0.9rem;
+  border: 1.5px dashed var(--md-default-fg-color--lighter, #bbb);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.rozmiarowka-miniatura {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 10px;
+  cursor: zoom-in;
+  display: block;
+}
+
+.rozmiarowka-podpis {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+}
+
+.lightbox--widoczny {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 6px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  color: #111;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 44px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* ============ Popup / modal ============ */
+
+.app-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  padding: 1rem;
+}
+
+.app-modal-overlay--widoczny {
+  display: flex;
+}
+
+.app-modal {
+  background: var(--md-default-bg-color, #fff);
+  color: var(--md-default-fg-color, #111);
+  border-radius: 14px;
+  max-width: 360px;
+  width: 100%;
+  padding: 1.5rem 1.4rem 1.3rem;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.app-modal-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  margin: 0 auto 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.app-modal-icon--ok {
+  background: #2e7d32;
+}
+
+.app-modal-icon--blad {
+  background: #d32f2f;
+}
+
+.app-modal h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.app-modal p {
+  margin: 0 0 1.2rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* ============ Tabela ============ */
+
+.tabela-akcje {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+
+.tabela-akcje .stroj-btn {
+  width: auto;
+  flex: 1 1 auto;
+  min-width: 130px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+.tabela-stan {
+  font-size: 0.88rem;
+  opacity: 0.75;
+  margin-bottom: 0.6rem;
+}
+
+.tabela-wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--md-default-fg-color--lightest, #ddd);
+  border-radius: 10px;
+}
+
+#tabela-zawodnicy {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  min-width: 480px;
+}
+
+#tabela-zawodnicy th,
+#tabela-zawodnicy td {
+  padding: 0.6rem 0.6rem;
+  text-align: left;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest, #eee);
+  white-space: nowrap;
+}
+
+#tabela-zawodnicy th {
+  background: var(--md-primary-fg-color, #3f51b5);
+  color: #fff;
+  position: sticky;
+  top: 0;
+}
+
+#tabela-zawodnicy tbody tr:nth-child(even) {
+  background: var(--md-code-bg-color, rgba(0, 0, 0, 0.03));
+}
