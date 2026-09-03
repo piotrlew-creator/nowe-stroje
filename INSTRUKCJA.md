@@ -11,21 +11,43 @@ włączenie GitHub Pages, **(3)** opcjonalnie — podmiana obrazka rozmiarówki.
 
 Jeśli wcześniej wdrożyłeś `Code.gs` w Google Apps Script (adres URL jest
 już wklejony w `docs/js/config.js`), a plik `Code.gs` został od tego czasu
-zaktualizowany (np. dodano edycję/usuwanie wpisów w Tabeli), **musisz
-zaktualizować wdrożenie**, inaczej nowe funkcje nie będą działać:
+zaktualizowany, **musisz zaktualizować wdrożenie**, inaczej nowe funkcje
+nie będą działać (a w niektórych przypadkach dane mogą się źle wyświetlać).
 
-1. Otwórz arkusz Google Sheets → **Rozszerzenia → Apps Script**.
-2. Zaznacz całą zawartość edytora (`Ctrl+A`), usuń i wklej aktualną
+### Ważne: zmiana z 3.09.2026 dzieli "Rozmiar" na dwie kolumny
+
+Arkusz miał dotąd kolumnę **Rozmiar** (D) i **Uwagi** (E). Formularz ma
+teraz osobne pola na rozmiar koszulki i rozmiar spodenek, więc arkusz
+potrzebuje **nowej kolumny między nimi**. Jeśli masz już jakiekolwiek
+zapisane zgłoszenia, zrób to w tej kolejności — inaczej istniejące dane
+w kolumnie Uwagi zostaną błędnie odczytane jako rozmiar spodenek:
+
+1. Otwórz swój arkusz Google Sheets (zakładka **Zawodnicy**).
+2. Kliknij prawym przyciskiem na nagłówek kolumny **E** (Uwagi) →
+   **Wstaw 1 kolumnę w lewo** (Insert 1 column left). To przesunie
+   dotychczasową kolumnę Uwagi do F, nie ruszając istniejących danych.
+3. W nowej komórce **E1** wpisz: `Rozmiar spodenek`
+4. Zmień nagłówek **D1** z „Rozmiar” na „Rozmiar koszulki” (kosmetyczne,
+   ale zalecane dla przejrzystości).
+5. Dla istniejących wierszy kolumna E (Rozmiar spodenek) będzie na razie
+   pusta — możesz uzupełnić ją ręcznie w arkuszu, albo później przez
+   przycisk ✎ Edytuj na stronie Tabela.
+
+Dopiero teraz przejdź do aktualizacji kodu:
+
+6. W arkuszu: **Rozszerzenia → Apps Script**.
+7. Zaznacz całą zawartość edytora (`Ctrl+A`), usuń i wklej aktualną
    zawartość pliku [`google-apps-script/Code.gs`](google-apps-script/Code.gs).
    Zapisz (`Ctrl+S`).
-3. Kliknij **Wdróż → Zarządzaj wdwożeniami**.
-4. Przy istniejącym wdrożeniu kliknij ikonę ✏️ (edytuj).
-5. Przy polu **Wersja** wybierz **Nowa wersja** i kliknij **Wdróż**.
-6. Adres URL pozostaje taki sam — **nie trzeba** nic zmieniać w
-   `docs/js/config.js`.
+8. Kliknij **Wdróż → Zarządzaj wdrożeniami**.
+9. Przy istniejącym wdrożeniu kliknij ikonę ✏️ (edytuj).
+10. Przy polu **Wersja** wybierz **Nowa wersja** i kliknij **Wdróż**.
+11. Adres URL pozostaje taki sam — **nie trzeba** nic zmieniać w
+    `docs/js/config.js`.
 
-Jeśli backend nie był jeszcze wdrożony, pomiń tę sekcję i przejdź od razu
-do kroku 1 poniżej.
+Jeśli backend nie był jeszcze wdrożony (żadnych zgłoszeń jeszcze nie ma),
+pomiń całą tę sekcję i przejdź od razu do kroku 1 poniżej — nowy arkusz
+utworzy się automatycznie z poprawnymi kolumnami.
 
 ---
 
@@ -69,8 +91,8 @@ sterowany skryptem Google Apps Script.
 inaczej zmiany nie zostaną uwzględnione pod tym samym adresem URL.
 
 Arkusz automatycznie utworzy zakładkę **"Zawodnicy"** z nagłówkami
-(Numer zawodnika, Nazwisko, Imię, Rozmiar, Uwagi) przy pierwszym
-zapisanym zgłoszeniu.
+(Numer zawodnika, Nazwisko, Imię, Rozmiar koszulki, Rozmiar spodenek,
+Uwagi) przy pierwszym zapisanym zgłoszeniu.
 
 ---
 
@@ -122,25 +144,27 @@ opublikuje stronę (dzięki `.github/workflows/deploy.yml`).
 
 ---
 
-## 3. Podmiana obrazka rozmiarówki
+## 3. Podmiana obrazków rozmiarówki
 
-W repozytorium znajduje się tymczasowy obrazek zastępczy:
-`docs/img/rozmiarowka.jpg`.
+Na stronie są dwa obrazki z tabelami rozmiarów:
 
-Aby wstawić docelowe zdjęcie tabeli rozmiarów:
+- `docs/img/rozmiarowka-koszulki.jpg` — rozmiarówka koszulek
+- `docs/img/rozmiarowka-spodenki.jpg` — rozmiarówka spodenek
 
-1. Przygotuj plik `.jpg` z rozmiarówką.
-2. Zamień nim plik `docs/img/rozmiarowka.jpg` (zachowaj dokładnie tę samą
-   nazwę pliku — wtedy nie trzeba nic zmieniać w kodzie).
+Aby podmienić którykolwiek z nich (np. na nowy sezon lub inny model):
+
+1. Przygotuj nowy plik `.jpg`.
+2. Zamień nim odpowiedni plik w `docs/img/`, zachowując dokładnie tę
+   samą nazwę — wtedy nie trzeba nic zmieniać w kodzie.
 3. Zapisz, zatwierdź i wyślij zmianę:
 
    ```bash
-   git add docs/img/rozmiarowka.jpg
-   git commit -m "Dodaj docelowy obrazek rozmiarowki"
+   git add docs/img/rozmiarowka-koszulki.jpg docs/img/rozmiarowka-spodenki.jpg
+   git commit -m "Aktualizacja obrazkow rozmiarowki"
    git push
    ```
 
-Strona automatycznie się przebuduje z nowym obrazkiem.
+Strona automatycznie się przebuduje z nowymi obrazkami.
 
 ---
 

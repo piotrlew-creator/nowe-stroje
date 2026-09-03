@@ -13,7 +13,7 @@
  */
 
 const SHEET_NAME = "Zawodnicy";
-const HEADERS = ["Numer zawodnika", "Nazwisko", "Imię", "Rozmiar", "Uwagi"];
+const HEADERS = ["Numer zawodnika", "Nazwisko", "Imię", "Rozmiar koszulki", "Rozmiar spodenek", "Uwagi"];
 
 function doGet(e) {
   const sheet = getSheet_();
@@ -28,8 +28,9 @@ function doGet(e) {
       numer: r[0],
       nazwisko: r[1],
       imie: r[2],
-      rozmiar: r[3],
-      uwagi: r[4] || ""
+      rozmiarKoszulki: r[3],
+      rozmiarSpodenek: r[4],
+      uwagi: r[5] || ""
     });
   }
 
@@ -72,7 +73,7 @@ function dodajWiersz_(payload) {
   const konflikt = znajdzKonflikt_(rows, dane, -1);
   if (konflikt) return jsonOutput_({ status: "conflict", reason: konflikt });
 
-  sheet.appendRow([dane.numer, dane.nazwisko, dane.imie, dane.rozmiar, dane.uwagi]);
+  sheet.appendRow([dane.numer, dane.nazwisko, dane.imie, dane.rozmiarKoszulki, dane.rozmiarSpodenek, dane.uwagi]);
   return jsonOutput_({ status: "ok" });
 }
 
@@ -95,7 +96,7 @@ function edytujWiersz_(payload) {
   const konflikt = znajdzKonflikt_(rows, dane, wiersz);
   if (konflikt) return jsonOutput_({ status: "conflict", reason: konflikt });
 
-  sheet.getRange(wiersz, 1, 1, 5).setValues([[dane.numer, dane.nazwisko, dane.imie, dane.rozmiar, dane.uwagi]]);
+  sheet.getRange(wiersz, 1, 1, 6).setValues([[dane.numer, dane.nazwisko, dane.imie, dane.rozmiarKoszulki, dane.rozmiarSpodenek, dane.uwagi]]);
   return jsonOutput_({ status: "ok" });
 }
 
@@ -118,11 +119,19 @@ function wyciagnijDane_(payload) {
   const nazwisko = String(payload.nazwisko || "").trim();
   const imie = String(payload.imie || "").trim();
   const numer = String(payload.numer || "").trim();
-  const rozmiar = String(payload.rozmiar || "").trim();
+  const rozmiarKoszulki = String(payload.rozmiarKoszulki || "").trim();
+  const rozmiarSpodenek = String(payload.rozmiarSpodenek || "").trim();
   const uwagi = String(payload.uwagi || "").trim();
 
-  if (!nazwisko || !imie || !numer || !rozmiar) return null;
-  return { nazwisko: nazwisko, imie: imie, numer: numer, rozmiar: rozmiar, uwagi: uwagi };
+  if (!nazwisko || !imie || !numer || !rozmiarKoszulki || !rozmiarSpodenek) return null;
+  return {
+    nazwisko: nazwisko,
+    imie: imie,
+    numer: numer,
+    rozmiarKoszulki: rozmiarKoszulki,
+    rozmiarSpodenek: rozmiarSpodenek,
+    uwagi: uwagi
+  };
 }
 
 /**

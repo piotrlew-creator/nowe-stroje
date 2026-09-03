@@ -1,8 +1,8 @@
 # Nowe Stroje
 
 Prosta strona (GitHub + Markdown + MkDocs) do zbierania zgłoszeń danych
-do nowych strojów sportowych: nazwisko, imię, rozmiar, numer zawodnika
-i opcjonalne uwagi.
+do nowych strojów sportowych: nazwisko, imię, rozmiar koszulki, rozmiar
+spodenek, numer zawodnika i opcjonalne uwagi.
 
 - **Zgłoszenie** (`docs/index.md`) — formularz z walidacją duplikatów
   (numer zawodnika i para imię+nazwisko) oraz podglądem rozmiarówki.

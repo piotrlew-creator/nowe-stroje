@@ -24,7 +24,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const dane = {
       nazwisko: document.getElementById("nazwisko").value.trim(),
       imie: document.getElementById("imie").value.trim(),
-      rozmiar: document.getElementById("rozmiar").value,
+      rozmiarKoszulki: document.getElementById("rozmiar-koszulki").value,
+      rozmiarSpodenek: document.getElementById("rozmiar-spodenek").value,
       numer: document.getElementById("numer").value.trim(),
       uwagi: document.getElementById("uwagi").value.trim()
     };
@@ -80,22 +81,28 @@ document.addEventListener("DOMContentLoaded", function () {
     submitBtn.textContent = wysyla ? "Zapisywanie…" : "Zatwierdź";
   }
 
-  // --- Lightbox z rozmiarówką ---
-  const miniatura = document.getElementById("rozmiarowka-miniatura");
+  // --- Lightbox z rozmiarówkami (obsługuje dowolną liczbę miniatur) ---
+  const miniatury = document.querySelectorAll(".rozmiarowka-miniatura[data-lightbox]");
   const lightbox = document.getElementById("rozmiarowka-lightbox");
+  const lightboxImg = document.getElementById("rozmiarowka-lightbox-img");
   const lightboxClose = document.getElementById("rozmiarowka-close");
 
-  if (miniatura && lightbox) {
+  if (miniatury.length && lightbox) {
     // Patrz komentarz w common.js: przenosimy lightbox do <body>, żeby
     // "position: fixed" poprawnie pokrywał cały ekran w motywie Material.
     if (lightbox.parentElement !== document.body) {
       document.body.appendChild(lightbox);
     }
 
-    miniatura.addEventListener("click", function () {
-      lightbox.classList.add("lightbox--widoczny");
-      lightbox.setAttribute("aria-hidden", "false");
+    miniatury.forEach(function (miniatura) {
+      miniatura.addEventListener("click", function () {
+        lightboxImg.src = miniatura.src;
+        lightboxImg.alt = miniatura.alt;
+        lightbox.classList.add("lightbox--widoczny");
+        lightbox.setAttribute("aria-hidden", "false");
+      });
     });
+
     lightboxClose.addEventListener("click", zamknijLightbox);
     lightbox.addEventListener("click", function (e) {
       if (e.target === lightbox) zamknijLightbox();

@@ -4,8 +4,16 @@ Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
 
 <div class="rozmiarowka-blok">
   <p class="rozmiarowka-cena">Cena za dwa komplety strojów meczowych: <strong>290 zł</strong></p>
-  <img id="rozmiarowka-miniatura" class="rozmiarowka-miniatura" src="img/rozmiarowka.jpg" alt="Tabela rozmiarów strojów sportowych">
-  <span class="rozmiarowka-podpis">Stuknij, aby powiększyć tabelę rozmiarów</span>
+
+  <figure class="rozmiarowka-figura">
+    <img class="rozmiarowka-miniatura" data-lightbox src="img/rozmiarowka-koszulki.jpg" alt="Rozmiary koszulek">
+    <figcaption class="rozmiarowka-podpis">Rozmiary koszulek — stuknij, aby powiększyć</figcaption>
+  </figure>
+
+  <figure class="rozmiarowka-figura">
+    <img class="rozmiarowka-miniatura" data-lightbox src="img/rozmiarowka-spodenki.jpg" alt="Rozmiary spodenek">
+    <figcaption class="rozmiarowka-podpis">Rozmiary spodenek — stuknij, aby powiększyć</figcaption>
+  </figure>
 </div>
 
 <form id="zgloszenie-form" class="stroj-form" novalidate>
@@ -21,8 +29,23 @@ Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
   </div>
 
   <div class="field">
-    <label for="rozmiar">Rozmiar stroju <span class="wymagane">*</span></label>
-    <select id="rozmiar" name="rozmiar" required>
+    <label for="rozmiar-koszulki">Rozmiar koszulki <span class="wymagane">*</span></label>
+    <select id="rozmiar-koszulki" name="rozmiar-koszulki" required>
+      <option value="" disabled selected>Wybierz rozmiar</option>
+      <option value="XS">XS</option>
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+      <option value="2XL">2XL</option>
+      <option value="3XL">3XL</option>
+      <option value="4XL">4XL</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="rozmiar-spodenek">Rozmiar spodenek <span class="wymagane">*</span></label>
+    <select id="rozmiar-spodenek" name="rozmiar-spodenek" required>
       <option value="" disabled selected>Wybierz rozmiar</option>
       <option value="XS">XS</option>
       <option value="S">S</option>
@@ -51,7 +74,7 @@ Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
 
 <div id="rozmiarowka-lightbox" class="lightbox" aria-hidden="true">
   <button id="rozmiarowka-close" class="lightbox-close" type="button" aria-label="Zamknij">✕</button>
-  <img src="img/rozmiarowka.jpg" alt="Tabela rozmiarów strojów sportowych — powiększenie">
+  <img id="rozmiarowka-lightbox-img" src="" alt="">
 </div>
 
 <div id="app-modal-overlay" class="app-modal-overlay" aria-hidden="true">

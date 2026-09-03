@@ -15,7 +15,8 @@
         <th>Numer zawodnika</th>
         <th>Nazwisko</th>
         <th>Imię</th>
-        <th>Rozmiar</th>
+        <th>Rozmiar koszulki</th>
+        <th>Rozmiar spodenek</th>
         <th>Uwagi</th>
         <th>Akcje</th>
       </tr>
@@ -64,8 +65,22 @@
       </div>
 
       <div class="field">
-        <label for="edit-rozmiar">Rozmiar stroju <span class="wymagane">*</span></label>
-        <select id="edit-rozmiar" required>
+        <label for="edit-rozmiar-koszulki">Rozmiar koszulki <span class="wymagane">*</span></label>
+        <select id="edit-rozmiar-koszulki" required>
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+          <option value="2XL">2XL</option>
+          <option value="3XL">3XL</option>
+          <option value="4XL">4XL</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="edit-rozmiar-spodenek">Rozmiar spodenek <span class="wymagane">*</span></label>
+        <select id="edit-rozmiar-spodenek" required>
           <option value="XS">XS</option>
           <option value="S">S</option>
           <option value="M">M</option>

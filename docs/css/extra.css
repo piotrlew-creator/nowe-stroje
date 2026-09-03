@@ -102,7 +102,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1.1rem;
   margin: 0.5rem 0 1.3rem;
   padding: 0.9rem;
   border: 1.5px dashed var(--md-default-fg-color--lighter, #bbb);
@@ -119,6 +119,14 @@
 .rozmiarowka-cena strong {
   color: var(--md-primary-fg-color, #3f51b5);
   font-size: 1.15rem;
+}
+
+.rozmiarowka-figura {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .rozmiarowka-miniatura {
@@ -302,7 +310,7 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 0.88rem;
-  min-width: 580px;
+  min-width: 700px;
 }
 
 #tabela-zawodnicy th,

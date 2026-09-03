@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     dane.forEach(function (wiersz) {
       const tr = document.createElement("tr");
 
-      [wiersz.numer, wiersz.nazwisko, wiersz.imie, wiersz.rozmiar, wiersz.uwagi].forEach(function (wartosc) {
+      [wiersz.numer, wiersz.nazwisko, wiersz.imie, wiersz.rozmiarKoszulki, wiersz.rozmiarSpodenek, wiersz.uwagi].forEach(function (wartosc) {
         const td = document.createElement("td");
         td.textContent = wartosc || "";
         tr.appendChild(td);
@@ -176,7 +176,8 @@ document.addEventListener("DOMContentLoaded", function () {
     wierszDoEdycji = wiersz;
     document.getElementById("edit-nazwisko").value = wiersz.nazwisko || "";
     document.getElementById("edit-imie").value = wiersz.imie || "";
-    document.getElementById("edit-rozmiar").value = wiersz.rozmiar || "";
+    document.getElementById("edit-rozmiar-koszulki").value = wiersz.rozmiarKoszulki || "";
+    document.getElementById("edit-rozmiar-spodenek").value = wiersz.rozmiarSpodenek || "";
     document.getElementById("edit-numer").value = wiersz.numer || "";
     document.getElementById("edit-uwagi").value = wiersz.uwagi || "";
     ukryjBladEdycji();
@@ -211,7 +212,8 @@ document.addEventListener("DOMContentLoaded", function () {
       wiersz: wierszDoEdycji.wiersz,
       nazwisko: document.getElementById("edit-nazwisko").value.trim(),
       imie: document.getElementById("edit-imie").value.trim(),
-      rozmiar: document.getElementById("edit-rozmiar").value,
+      rozmiarKoszulki: document.getElementById("edit-rozmiar-koszulki").value,
+      rozmiarSpodenek: document.getElementById("edit-rozmiar-spodenek").value,
       numer: document.getElementById("edit-numer").value.trim(),
       uwagi: document.getElementById("edit-uwagi").value.trim()
     };
@@ -262,9 +264,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     zaladujSkrypt(_vendorUrl("xlsx.full.min.js"))
       .then(function () {
-        const naglowki = ["Numer zawodnika", "Nazwisko", "Imię", "Rozmiar", "Uwagi"];
+        const naglowki = ["Numer zawodnika", "Nazwisko", "Imię", "Rozmiar koszulki", "Rozmiar spodenek", "Uwagi"];
         const wiersze = aktualneDane.map(function (w) {
-          return [w.numer, w.nazwisko, w.imie, w.rozmiar, w.uwagi || ""];
+          return [w.numer, w.nazwisko, w.imie, w.rozmiarKoszulki, w.rozmiarSpodenek, w.uwagi || ""];
         });
         const wszystkieWiersze = [naglowki].concat(wiersze);
 
@@ -326,18 +328,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         doc.autoTable({
           startY: 22,
-          head: [["Numer zawodnika", "Nazwisko", "Imię", "Rozmiar", "Uwagi"]],
+          head: [["Numer zawodnika", "Nazwisko", "Imię", "Rozmiar koszulki", "Rozmiar spodenek", "Uwagi"]],
           body: aktualneDane.map(function (w) {
-            return [w.numer, w.nazwisko, w.imie, w.rozmiar, w.uwagi || ""];
+            return [w.numer, w.nazwisko, w.imie, w.rozmiarKoszulki, w.rozmiarSpodenek, w.uwagi || ""];
           }),
           styles: { font: "DejaVuSans", fontStyle: "normal", fontSize: 10, cellPadding: 3, overflow: "linebreak" },
           headStyles: { font: "DejaVuSans", fontStyle: "normal", fillColor: [63, 81, 181], textColor: 255 },
           columnStyles: {
-            0: { cellWidth: 28 },
-            1: { cellWidth: 45 },
-            2: { cellWidth: 40 },
-            3: { cellWidth: 22 },
-            4: { cellWidth: "auto" }
+            0: { cellWidth: 24 },
+            1: { cellWidth: 38 },
+            2: { cellWidth: 32 },
+            3: { cellWidth: 26 },
+            4: { cellWidth: 26 },
+            5: { cellWidth: "auto" }
           }
         });
 
