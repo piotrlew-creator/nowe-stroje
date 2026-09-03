@@ -92,7 +92,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       [wiersz.numer, wiersz.nazwisko, wiersz.imie, wiersz.rozmiarKoszulki, wiersz.rozmiarSpodenek, wiersz.uwagi].forEach(function (wartosc) {
         const td = document.createElement("td");
-        td.textContent = wartosc || "";
+        // Uwaga: "??" (a nie "||"), żeby numer zawodnika "0" nie zniknął —
+        // "0" jest liczbą fałszywą (falsy) w JS, więc "0 || ''" dałoby pusty ciąg.
+        td.textContent = (wartosc === null || wartosc === undefined) ? "" : wartosc;
         tr.appendChild(td);
       });
 
@@ -174,12 +176,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function otworzEdycje(wiersz) {
     wierszDoEdycji = wiersz;
-    document.getElementById("edit-nazwisko").value = wiersz.nazwisko || "";
-    document.getElementById("edit-imie").value = wiersz.imie || "";
-    document.getElementById("edit-rozmiar-koszulki").value = wiersz.rozmiarKoszulki || "";
-    document.getElementById("edit-rozmiar-spodenek").value = wiersz.rozmiarSpodenek || "";
-    document.getElementById("edit-numer").value = wiersz.numer || "";
-    document.getElementById("edit-uwagi").value = wiersz.uwagi || "";
+    // Uwaga: "??" (a nie "||"), żeby numer zawodnika "0" nie zniknął z pola —
+    // "0" jest liczbą fałszywą (falsy) w JS, więc "0 || ''" dałoby puste pole.
+    document.getElementById("edit-nazwisko").value = wiersz.nazwisko ?? "";
+    document.getElementById("edit-imie").value = wiersz.imie ?? "";
+    document.getElementById("edit-rozmiar-koszulki").value = wiersz.rozmiarKoszulki ?? "";
+    document.getElementById("edit-rozmiar-spodenek").value = wiersz.rozmiarSpodenek ?? "";
+    document.getElementById("edit-numer").value = wiersz.numer ?? "";
+    document.getElementById("edit-uwagi").value = wiersz.uwagi ?? "";
     ukryjBladEdycji();
     pokazOverlay_("edit-modal-overlay");
   }
