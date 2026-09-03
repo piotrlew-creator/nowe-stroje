@@ -335,8 +335,8 @@ document.addEventListener("DOMContentLoaded", function () {
           styles: { font: "DejaVuSans", fontStyle: "normal", fontSize: 10, cellPadding: 3, overflow: "linebreak" },
           headStyles: { font: "DejaVuSans", fontStyle: "normal", fillColor: [63, 81, 181], textColor: 255 },
           columnStyles: {
-            0: { cellWidth: 24 },
-            1: { cellWidth: 38 },
+            0: { cellWidth: 28 },
+            1: { cellWidth: 50 },
             2: { cellWidth: 32 },
             3: { cellWidth: 26 },
             4: { cellWidth: 26 },
