@@ -1,4 +1,4 @@
-# Zgłoszenie danych do stroju
+# Nowe stroje dla U15
 
 Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
 
