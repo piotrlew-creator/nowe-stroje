@@ -3,6 +3,7 @@
 Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
 
 <div class="rozmiarowka-blok">
+  <p class="rozmiarowka-cena">Pełny komplet dwóch strojów: <strong>290 zł</strong></p>
   <img id="rozmiarowka-miniatura" class="rozmiarowka-miniatura" src="img/rozmiarowka.jpg" alt="Tabela rozmiarów strojów sportowych">
   <span class="rozmiarowka-podpis">Stuknij, aby powiększyć tabelę rozmiarów</span>
 </div>
@@ -28,7 +29,9 @@ Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
       <option value="M">M</option>
       <option value="L">L</option>
       <option value="XL">XL</option>
-      <option value="XXL">XXL</option>
+      <option value="2XL">2XL</option>
+      <option value="3XL">3XL</option>
+      <option value="4XL">4XL</option>
     </select>
   </div>
 
