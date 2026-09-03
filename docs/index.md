@@ -3,7 +3,7 @@
 Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
 
 <div class="rozmiarowka-blok">
-  <p class="rozmiarowka-cena">Pełny komplet dwóch strojów: <strong>290 zł</strong></p>
+  <p class="rozmiarowka-cena">Cena za dwa komplety strojów meczowych: <strong>290 zł</strong></p>
   <img id="rozmiarowka-miniatura" class="rozmiarowka-miniatura" src="img/rozmiarowka.jpg" alt="Tabela rozmiarów strojów sportowych">
   <span class="rozmiarowka-podpis">Stuknij, aby powiększyć tabelę rozmiarów</span>
 </div>
