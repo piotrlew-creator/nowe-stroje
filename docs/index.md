@@ -32,6 +32,10 @@ Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
     <label for="rozmiar-koszulki">Rozmiar koszulki <span class="wymagane">*</span></label>
     <select id="rozmiar-koszulki" name="rozmiar-koszulki" required>
       <option value="" disabled selected>Wybierz rozmiar</option>
+      <option value="140">140</option>
+      <option value="146">146</option>
+      <option value="152">152</option>
+      <option value="158">158</option>
       <option value="XS">XS</option>
       <option value="S">S</option>
       <option value="M">M</option>
@@ -47,6 +51,10 @@ Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
     <label for="rozmiar-spodenek">Rozmiar spodenek <span class="wymagane">*</span></label>
     <select id="rozmiar-spodenek" name="rozmiar-spodenek" required>
       <option value="" disabled selected>Wybierz rozmiar</option>
+      <option value="140">140</option>
+      <option value="146">146</option>
+      <option value="152">152</option>
+      <option value="158">158</option>
       <option value="XS">XS</option>
       <option value="S">S</option>
       <option value="M">M</option>
