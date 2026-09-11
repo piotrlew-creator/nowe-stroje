@@ -11,13 +11,15 @@ Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
   </div>
 
   <figure class="rozmiarowka-figura">
+    <p class="rozmiarowka-tytul">Rozmiary koszulek (w cm)</p>
     <img class="rozmiarowka-miniatura" data-lightbox src="img/rozmiarowka-koszulki.jpg" alt="Rozmiary koszulek">
-    <figcaption class="rozmiarowka-podpis">Rozmiary koszulek — stuknij, aby powiększyć</figcaption>
+    <figcaption class="rozmiarowka-podpis">stuknij, aby powiększyć</figcaption>
   </figure>
 
   <figure class="rozmiarowka-figura">
+    <p class="rozmiarowka-tytul">Rozmiary spodenek (w cm)</p>
     <img class="rozmiarowka-miniatura" data-lightbox src="img/rozmiarowka-spodenki.jpg" alt="Rozmiary spodenek">
-    <figcaption class="rozmiarowka-podpis">Rozmiary spodenek — stuknij, aby powiększyć</figcaption>
+    <figcaption class="rozmiarowka-podpis">stuknij, aby powiększyć</figcaption>
   </figure>
 </div>
 
