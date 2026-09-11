@@ -67,6 +67,10 @@
       <div class="field">
         <label for="edit-rozmiar-koszulki">Rozmiar koszulki <span class="wymagane">*</span></label>
         <select id="edit-rozmiar-koszulki" required>
+          <option value="116">116</option>
+          <option value="122">122</option>
+          <option value="128">128</option>
+          <option value="134">134</option>
           <option value="140">140</option>
           <option value="146">146</option>
           <option value="152">152</option>
@@ -85,6 +89,10 @@
       <div class="field">
         <label for="edit-rozmiar-spodenek">Rozmiar spodenek <span class="wymagane">*</span></label>
         <select id="edit-rozmiar-spodenek" required>
+          <option value="116">116</option>
+          <option value="122">122</option>
+          <option value="128">128</option>
+          <option value="134">134</option>
           <option value="140">140</option>
           <option value="146">146</option>
           <option value="152">152</option>

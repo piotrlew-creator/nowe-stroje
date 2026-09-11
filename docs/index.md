@@ -1,4 +1,4 @@
-# Nowe stroje dla U15
+# Nowe stroje dla U11
 
 Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
 
@@ -37,6 +37,10 @@ Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
     <label for="rozmiar-koszulki">Rozmiar koszulki <span class="wymagane">*</span></label>
     <select id="rozmiar-koszulki" name="rozmiar-koszulki" required>
       <option value="" disabled selected>Wybierz rozmiar</option>
+      <option value="116">116</option>
+      <option value="122">122</option>
+      <option value="128">128</option>
+      <option value="134">134</option>
       <option value="140">140</option>
       <option value="146">146</option>
       <option value="152">152</option>
@@ -56,6 +60,10 @@ Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
     <label for="rozmiar-spodenek">Rozmiar spodenek <span class="wymagane">*</span></label>
     <select id="rozmiar-spodenek" name="rozmiar-spodenek" required>
       <option value="" disabled selected>Wybierz rozmiar</option>
+      <option value="116">116</option>
+      <option value="122">122</option>
+      <option value="128">128</option>
+      <option value="134">134</option>
       <option value="140">140</option>
       <option value="146">146</option>
       <option value="152">152</option>
