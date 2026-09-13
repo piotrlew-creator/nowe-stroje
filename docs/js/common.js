@@ -23,6 +23,39 @@ function ukryjModal() {
   ukryjOverlay_("app-modal-overlay");
 }
 
+// --- Numer zawodnika ---
+//
+// Dozwolone są: "0", "00" oraz liczby od 1 do 99 bez zera wiodącego.
+// "0" i "00" to DWA RÓŻNE numery, dlatego numer jest wszędzie traktowany
+// jako tekst, a nie jako liczba (liczba 00 nie istnieje — stałaby się 0).
+// Wykluczone są numery typu "07", "003" oraz wszystkie trzycyfrowe.
+
+const NUMER_WZORZEC = /^(0|00|[1-9][0-9]?)$/;
+const NUMER_KOMUNIKAT =
+  "Numer zawodnika może być: 0, 00 albo liczba od 1 do 99. " +
+  "Numery z zerem z przodu (np. 07) oraz trzycyfrowe nie są dozwolone.";
+
+function poprawnyNumer(numer) {
+  return NUMER_WZORZEC.test(String(numer == null ? "" : numer).trim());
+}
+
+/**
+ * Sprawia, że przeglądarka pokazuje NASZ komunikat po polsku zamiast
+ * domyślnego "Dopasuj format do wymaganego". Puste pole zostawiamy
+ * przeglądarce — wtedy ma się pojawić standardowy komunikat o polu
+ * wymaganym.
+ */
+function pilnujNumeru(input) {
+  if (!input) return;
+  function sprawdz() {
+    const wartosc = input.value.trim();
+    input.setCustomValidity(wartosc === "" || poprawnyNumer(wartosc) ? "" : NUMER_KOMUNIKAT);
+  }
+  input.addEventListener("input", sprawdz);
+  input.addEventListener("blur", sprawdz);
+  sprawdz();
+}
+
 function backendSkonfigurowany() {
   return typeof APPS_SCRIPT_URL === "string" &&
     APPS_SCRIPT_URL.indexOf("http") === 0;

@@ -83,7 +83,10 @@ Wypełnij poniższy formularz, aby zgłosić dane do nowego stroju sportowego.
 
   <div class="field">
     <label for="numer">Numer zawodnika <span class="wymagane">*</span></label>
-    <input type="number" id="numer" name="numer" inputmode="numeric" min="0" step="1" required>
+    <input type="text" id="numer" name="numer" inputmode="numeric" maxlength="2"
+           pattern="0|00|[1-9][0-9]?" autocomplete="off"
+           title="Dozwolone: 0, 00 oraz liczby od 1 do 99" required>
+    <span class="field-help">Dozwolone: 0, 00 oraz od 1 do 99. Numery takie jak 07 czy trzycyfrowe nie są możliwe.</span>
   </div>
 
   <div class="field">

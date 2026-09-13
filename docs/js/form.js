@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const submitBtn = document.getElementById("zgloszenie-submit");
 
+  pilnujNumeru(document.getElementById("numer"));
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     wyslijZgloszenie();
@@ -21,12 +23,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!form.reportValidity()) return;
 
+    const numer = document.getElementById("numer").value.trim();
+    if (!poprawnyNumer(numer)) {
+      pokazModal("Nieprawidłowy numer", NUMER_KOMUNIKAT, { typ: "blad" });
+      return;
+    }
+
     const dane = {
       nazwisko: document.getElementById("nazwisko").value.trim(),
       imie: document.getElementById("imie").value.trim(),
       rozmiarKoszulki: document.getElementById("rozmiar-koszulki").value,
       rozmiarSpodenek: document.getElementById("rozmiar-spodenek").value,
-      numer: document.getElementById("numer").value.trim(),
+      numer: numer,
       uwagi: document.getElementById("uwagi").value.trim()
     };
 

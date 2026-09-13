@@ -14,6 +14,25 @@ już wklejony w `docs/js/config.js`), a plik `Code.gs` został od tego czasu
 zaktualizowany, **musisz zaktualizować wdrożenie**, inaczej nowe funkcje
 nie będą działać (a w niektórych przypadkach dane mogą się źle wyświetlać).
 
+### Ważne: zmiana z 13.09.2026 — numery 0 i 00 jako osobne numery
+
+Numer zawodnika jest teraz **tekstem**, a nie liczbą, dzięki czemu **0 i 00
+to dwa różne numery**. Dozwolone numery: `0`, `00` oraz od `1` do `99`.
+Niedozwolone: numery z zerem z przodu (`07`, `03`) i trzycyfrowe.
+
+**Ta zmiana wymaga wdrożenia nowej wersji `Code.gs`** (kroki 6–11 poniżej).
+Bez tego backend nadal zapisze „00" jako liczbę 0 i oba numery będą
+nierozróżnialne.
+
+Wyjaśnienie, dlaczego to konieczne: Google Sheets domyślnie sam zamienia
+wpisy wyglądające jak liczby na liczby — „00" stałoby się `0`. Nowa wersja
+skryptu ustawia w kolumnie **Numer zawodnika** format tekstowy (`@`) przed
+każdym zapisem, więc „00" zostaje „00".
+
+Istniejące wpisy nie wymagają żadnych zmian w arkuszu — są odczytywane
+poprawnie (numer `7` nadal będzie numerem `7`). Format tekstowy zaczyna
+obowiązywać dla nowych i edytowanych wpisów.
+
 ### Ważne: zmiana z 3.09.2026 dzieli "Rozmiar" na dwie kolumny
 
 Arkusz miał dotąd kolumnę **Rozmiar** (D) i **Uwagi** (E). Formularz ma
@@ -173,6 +192,10 @@ Strona automatycznie się przebuduje z nowymi obrazkami.
 - Formularz (`docs/index.md` + `docs/js/form.js`) wysyła dane do Twojego
   Google Apps Script, który sprawdza duplikaty numeru zawodnika oraz
   pary imię+nazwisko i zapisuje wiersz w arkuszu Google Sheets.
+- Numer zawodnika: dozwolone `0`, `00` oraz `1`–`99`. `0` i `00` to dwa
+  różne numery, więc mogą je nosić dwaj różni zawodnicy. Numery z zerem
+  z przodu (`07`) i trzycyfrowe są odrzucane — zarówno w przeglądarce,
+  jak i po stronie Apps Script.
 - Zakładka Tabela (`docs/tabela.md` + `docs/js/tabela.js`) pobiera
   aktualne dane z tego samego skryptu i renderuje tabelę. Każdy wiersz ma
   przyciski ✎ (edytuj — otwiera formularz w popupie) i 🗑 (usuń — po

@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const confirmBodyEl = document.getElementById("confirm-modal-body");
 
   const editForm = document.getElementById("edit-form");
+  pilnujNumeru(document.getElementById("edit-numer"));
   const editCancelBtn = document.getElementById("edit-modal-cancel");
   const editBladEl = document.getElementById("edit-form-blad");
   const editSaveBtn = document.getElementById("edit-modal-save");
@@ -211,6 +212,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     ukryjBladEdycji();
 
+    const numer = document.getElementById("edit-numer").value.trim();
+    if (!poprawnyNumer(numer)) {
+      pokazBladEdycji(NUMER_KOMUNIKAT);
+      return;
+    }
+
     const dane = {
       akcja: "edytuj",
       wiersz: wierszDoEdycji.wiersz,
@@ -218,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function () {
       imie: document.getElementById("edit-imie").value.trim(),
       rozmiarKoszulki: document.getElementById("edit-rozmiar-koszulki").value,
       rozmiarSpodenek: document.getElementById("edit-rozmiar-spodenek").value,
-      numer: document.getElementById("edit-numer").value.trim(),
+      numer: numer,
       uwagi: document.getElementById("edit-uwagi").value.trim()
     };
 
